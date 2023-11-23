@@ -19,7 +19,7 @@ headers = {"Authorization": f"Bearer {API_TOKEN}"}
 API_URL = "https://api-inference.huggingface.co/models/HyperMoon/wav2vec2-base-960h-finetuned-deepfake"
 
 # File uploader allows the user to add their own audio
-uploaded_file = st.file_uploader("Upload audio", type=['wav', 'mp3', 'flac'])
+uploaded_file = st.file_uploader("Upload audio", type=['wav', 'mp3', 'flac'], key='file_uploader')
 
 # Temporary directory for uploaded files
 TEMP_DIR = "tempDir"
@@ -66,12 +66,17 @@ if uploaded_file is not None:
     dataframe = pd.read_csv(uploaded_file)
     st.write(dataframe)
 
-if st.button('Analyze'):
+if st.button('Analyze', key='analyze_button'):
     if uploaded_file is not None:
         # Save the uploaded audio file to the filesystem
         with open(os.path.join("tempDir", uploaded_file.name), "wb") as f:
             f.write(uploaded_file.getbuffer())
-        
+
+if 'uploaded_file' not in st.session_state:
+    st.session_state['uploaded_file'] = st.file_uploader("Upload audio", type=['wav', 'mp3', 'flac'])
+
+# Use st.session_state['uploaded_file'] to refer to the uploaded file elsewhere in the app
+
         # Call the query function
         result = query(os.path.join("tempDir", uploaded_file.name))
         
@@ -79,6 +84,8 @@ if st.button('Analyze'):
         st.write(result)
     else:
         st.error("Please upload an audio file first.")
+
+st.legacy_caching.clear_cache()
 
 data = query("C:/Users/2556740/afrikaans1.mp3")
 print(data)
