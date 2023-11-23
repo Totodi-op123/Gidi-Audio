@@ -66,16 +66,16 @@ if uploaded_file is not None:
     dataframe = pd.read_csv(uploaded_file)
     st.write(dataframe)
 
+if 'uploaded_file' not in st.session_state:
+    st.session_state['uploaded_file'] = st.file_uploader("Upload audio", type=['wav', 'mp3', 'flac'])
+
+uploaded_file = st.session_state['uploaded_file']
+
 if st.button('Analyze', key='analyze_button'):
     if uploaded_file is not None:
         # Save the uploaded audio file to the filesystem
         with open(os.path.join("tempDir", uploaded_file.name), "wb") as f:
             f.write(uploaded_file.getbuffer())
-
-if 'uploaded_file' not in st.session_state:
-    st.session_state['uploaded_file'] = st.file_uploader("Upload audio", type=['wav', 'mp3', 'flac'])
-
-# Use st.session_state['uploaded_file'] to refer to the uploaded file elsewhere in the app
 
         # Call the query function
         result = query(os.path.join("tempDir", uploaded_file.name))
@@ -85,6 +85,7 @@ if 'uploaded_file' not in st.session_state:
     else:
         st.error("Please upload an audio file first.")
 
+# This line is outside of the 'if' blocks and will always execute
 st.legacy_caching.clear_cache()
 
 data = query("C:/Users/2556740/afrikaans1.mp3")
