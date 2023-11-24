@@ -45,6 +45,14 @@ def query(filename):
     response = requests.request("POST", API_URL, headers=headers, data=data, params={"wait_for_model": True})
     return json.loads(response.content.decode("utf-8"))
 
+ except Exception as e:
+        # Here you can decide what to do with the exception
+        st.error("An error occurred during the analysis.")
+        # Optionally, log the error message to the console (not shown to the user)
+        print(e)
+        # Return None or an empty dict if you want to indicate no result
+        return None
+
 if st.button('Analyze'):
     if uploaded_file is not None:
         # Call the query function
