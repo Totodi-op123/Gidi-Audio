@@ -14,6 +14,9 @@ API_TOKEN = os.getenv("API_TOKEN")
 # Set page config
 st.set_page_config(page_title='Gidi Audio Scanner', layout='wide')
 
+# Define the page header
+st.markdown("<h1 style='text-align: center; color: red;'>GIDI AUDIO</h1>", unsafe_allow_html=True)
+
 #The API URL and headers
 headers = {"Authorization": f"Bearer {API_TOKEN}"}
 API_URL = "https://api-inference.huggingface.co/models/HyperMoon/wav2vec2-base-960h-finetuned-deepfake"
