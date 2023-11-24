@@ -42,16 +42,6 @@ def query(filename):
     response = requests.request("POST", API_URL, headers=headers, data=data, params={"wait_for_model": True})
     return json.loads(response.content.decode("utf-8"))
 
-if st.button('Analyze'):
-    if uploaded_file is not None:
-        # Call the query function
-        result = query(file_path)
-
-        # Display results
-        st.write(result)
-    else:
-        st.error("Please upload an audio file first.")
-
 if uploaded_file is not None:
     # To read file as bytes:
     bytes_data = uploaded_file.getvalue()
