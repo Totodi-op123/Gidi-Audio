@@ -45,6 +45,16 @@ def query(filename):
     response = requests.request("POST", API_URL, headers=headers, data=data, params={"wait_for_model": True})
     return json.loads(response.content.decode("utf-8"))
 
+if st.button('Analyze'):
+    if uploaded_file is not None:
+        # Call the query function
+        result = query(file_path)
+
+        # Display results
+        st.write(result)
+    else:
+        st.error("Please upload an audio file first.")
+
 if uploaded_file is not None:
     # To read file as bytes:
     bytes_data = uploaded_file.getvalue()
@@ -80,6 +90,3 @@ if st.button('Analyze', key='analyze_button'):
 
 # This line is outside of the 'if' blocks and will always execute
 st.legacy_caching.clear_cache()
-
-data = query("C:/Users/2556740/afrikaans1.mp3")
-print(data)
