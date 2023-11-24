@@ -12,7 +12,21 @@ load_dotenv()
 API_TOKEN = os.getenv("API_TOKEN")
 
 # Set page config
+st.set_page_config(page_title='Gidi Audio Scanner', layout='wide', page_icon='🎵')
 st.set_page_config(page_title='Gidi Audio Scanner', layout='wide')
+st.markdown("""
+    <style>
+    .reportview-container {
+        background: #100a1c;
+        color: #f1f1f1;
+    }
+    .sidebar .sidebar-content {
+        background: #100a1c;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+st.markdown('<h1 style="color: #ff4b4b;">Gidi Audio</h1>', unsafe_allow_html=True)
 
 #The API URL and headers
 headers = {"Authorization": f"Bearer {API_TOKEN}"}
@@ -90,3 +104,4 @@ st.legacy_caching.clear_cache()
 
 data = query("C:/Users/2556740/afrikaans1.mp3")
 print(data)
+
