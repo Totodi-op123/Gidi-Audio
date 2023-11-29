@@ -6,6 +6,7 @@ import os
 from io import StringIO, BytesIO
 from dotenv import load_dotenv
 import pandas as pd
+import hashlib
 
 #load .env file variables
 load_dotenv()
@@ -60,5 +61,3 @@ if st.button('Analyze'):
     else:
         st.error("Please upload an audio file first.")
 
-# Clear the cache
-st.legacy_caching.clear_cache()
