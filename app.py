@@ -24,9 +24,7 @@ st.markdown(
     </div>
     """,
     unsafe_allow_html=True
-)
-st.markdown(
-    """
+
     <div style='text-align: center;'>
         <h1 style='color: white;'>DEEP TRUTH</h1>
         <h4 style='color: white;'>SCAN.DETECT.PROTECT</h4>
