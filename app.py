@@ -14,7 +14,7 @@ API_TOKEN = os.getenv("API_TOKEN")
 st.set_page_config(page_title='Deep Truth Scanner', layout='wide', initial_sidebar_state='collapsed')
 
 # Define the page header with logo
-logo_path = "Gidi-Audio/deep truth.png"  # Update this path to your logo image
+logo_path = "deep_truth.png"  # Update this path to your logo image
 
 st.markdown(
     """
