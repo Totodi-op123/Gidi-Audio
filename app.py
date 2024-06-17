@@ -14,30 +14,18 @@ API_TOKEN = os.getenv("API_TOKEN")
 st.set_page_config(page_title='Deep Truth Scanner', layout='wide', initial_sidebar_state='collapsed')
 
 # Define the page header with logo
-logo_path = "deep_truth.png"  # Update this path to your logo image
+logo_path = "deep truth.png"  # Use the exact filename
+
+# Display logo using st.image
+st.image(logo_path, width=200)
 
 st.markdown(
     """
-    <style>
-    .header-container {
-        text-align: center;
-    }
-    .header-text {
-        color: white;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-st.markdown(
-    """
-    <div class="header-container">
-        <img src='{}' width='200'>
-        <h1 class='header-text'>DEEP TRUTH</h1>
-        <h4 class='header-text'>SCAN.DETECT.PROTECT</h4>
+    <div style='text-align: center;'>
+        <h1 style='color: white;'>DEEP TRUTH</h1>
+        <h4 style='color: white;'>SCAN.DETECT.PROTECT</h4>
     </div>
-    """.format(logo_path),
+    """,
     unsafe_allow_html=True
 )
 
@@ -82,3 +70,4 @@ if st.button('Analyze'):
             st.error("Analysis failed. Please try again.")
     else:
         st.error("Please upload an audio file first.")
+
