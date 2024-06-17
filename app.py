@@ -14,7 +14,7 @@ API_TOKEN = os.getenv("API_TOKEN")
 st.set_page_config(page_title='Deep Truth Scanner', layout='wide', initial_sidebar_state='collapsed')
 
 # Define the page header with logo
-logo_path = "deep truth.png"  # Use the exact filename
+logo_path = "deep_truth.png"  # Use the exact filename
 
 # Display logo using st.image
 st.image(logo_path, width=200)
