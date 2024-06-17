@@ -3,23 +3,45 @@ import streamlit as st
 import json
 import requests
 import os
-from io import StringIO, BytesIO
 from dotenv import load_dotenv
-import pandas as pd
 import hashlib
 
-#load .env file variables
+# Load .env file variables
 load_dotenv()
 API_TOKEN = os.getenv("API_TOKEN")
 
 # Set page config
-st.set_page_config(page_title='Deep Truth Scanner', layout='wide')
+st.set_page_config(page_title='Deep Truth Scanner', layout='wide', initial_sidebar_state='collapsed')
 
-# Define the page header
-st.markdown("<h1 style='text-align: center; color: white;'>DEEP TRUTH</h1>", unsafe_allow_html=True)
-st.markdown("<h4 style='text-align: center; color: white;'>SCAN.DETECT.PROTECT</h4>", unsafe_allow_html=True)
+# Define the page header with logo
+logo_path = "deep truth.png"  # Update this path to your logo image
 
-#The API URL and headers
+st.markdown(
+    """
+    <style>
+    .header-container {
+        text-align: center;
+    }
+    .header-text {
+        color: white;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown(
+    """
+    <div class="header-container">
+        <img src='{}' width='200'>
+        <h1 class='header-text'>DEEP TRUTH</h1>
+        <h4 class='header-text'>SCAN.DETECT.PROTECT</h4>
+    </div>
+    """.format(logo_path),
+    unsafe_allow_html=True
+)
+
+# The API URL and headers
 headers = {"Authorization": f"Bearer {API_TOKEN}"}
 API_URL = "https://api-inference.huggingface.co/models/HyperMoon/wav2vec2-base-960h-finetuned-deepfake"
 
@@ -34,7 +56,7 @@ def query(filename):
     with open(filename, "rb") as f:
         data = f.read()
     payload = {"wait_for_model": True}
-    response = requests.request("POST", API_URL, headers=headers, data=data, params=payload)
+    response = requests.post(API_URL, headers=headers, data=data, params=payload)
     return json.loads(response.content.decode("utf-8"))
 
 # Handle file upload and save to the filesystem
@@ -60,4 +82,3 @@ if st.button('Analyze'):
             st.error("Analysis failed. Please try again.")
     else:
         st.error("Please upload an audio file first.")
-
