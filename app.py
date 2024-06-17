@@ -13,7 +13,7 @@ load_dotenv()
 API_TOKEN = os.getenv("API_TOKEN")
 
 # Set page config
-st.set_page_config(page_title='Gidi Audio Scanner', layout='wide')
+st.set_page_config(page_title='Deep Truth Scanner', layout='wide')
 
 # Define the page header
 st.markdown("<h1 style='text-align: center; color: white;'>DEEP TRUTH</h1>", unsafe_allow_html=True)
