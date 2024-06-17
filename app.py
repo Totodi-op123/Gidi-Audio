@@ -18,7 +18,7 @@ logo_path = "deep_truth.png"  # Use the exact filename
 
 # Display logo using st.image
 st.markdown(
-    f"""
+    """
     <div style='text-align: center;'>
  <img src='{logo_path}' width='200'>
     </div>
