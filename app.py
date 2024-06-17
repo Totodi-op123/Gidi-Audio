@@ -21,7 +21,7 @@ st.image(logo_path, width=200)
 
 st.markdown(
     """
-    <div style='text-align: center;'>
+    <div style='text-align: left;'>
         <h1 style='color: white;'>DEEP TRUTH</h1>
         <h4 style='color: white;'>SCAN.DETECT.PROTECT</h4>
     </div>
