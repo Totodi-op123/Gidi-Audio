@@ -18,13 +18,10 @@ logo_path = "deep_truth.png"  # Use the exact filename
 
 # Display logo using st.image
 st.markdown(
-    """
+    f"""
     <div style='text-align: center;'>
- <img src='{logo_path}' width='200'>
+        <img src='{logo_path}' width='200'>
     </div>
-    """,
-    unsafe_allow_html=True
-
     <div style='text-align: center;'>
         <h1 style='color: white;'>DEEP TRUTH</h1>
         <h4 style='color: white;'>SCAN.DETECT.PROTECT</h4>
