@@ -16,26 +16,19 @@ st.set_page_config(page_title='Deep Truth Scanner', layout='wide', initial_sideb
 # Define the page header with logo
 logo_path = "deep_truth.png"  # Use the exact filename
 
-# Centering the content using Streamlit's layout options
+# Display logo using st.image
+st.image(logo_path, width=200)
+
 st.markdown(
-    f"""
-    <style>
-        .center {{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-        }}
-    </style>
-    <body class="center">
-        <img src="{logo_path}" style="width: 200px;">
-        <h1 style="color: white;">DEEP TRUTH</h1>
-        <h4 style="color: white;">SCAN.DETECT.PROTECT</h4>
-    </body>
+    """
+    <div style='text-align: center;'>
+        <h1 style='color: white;'>DEEP TRUTH</h1>
+        <h4 style='color: white;'>SCAN.DETECT.PROTECT</h4>
+    </div>
     """,
     unsafe_allow_html=True
 )
+
 # The API URL and headers
 headers = {"Authorization": f"Bearer {API_TOKEN}"}
 API_URL = "https://api-inference.huggingface.co/models/HyperMoon/wav2vec2-base-960h-finetuned-deepfake"
