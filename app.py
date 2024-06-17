@@ -17,7 +17,7 @@ st.set_page_config(page_title='Deep Truth Scanner', layout='wide', initial_sideb
 logo_path = "deep_truth.png"  # Use the exact filename
 
 # Display logo using st.image
-st.image(logo_path, width=200)
+st.image(logo_path, width=200, caption=' ')
 
 st.markdown(
     """
